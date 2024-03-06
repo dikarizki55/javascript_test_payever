@@ -8,8 +8,138 @@
       name="description"
       content="High-performance HTML based website template."
     />
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(
+          circle,
+          rgba(77, 63, 48, 1) 0%,
+          rgba(0, 0, 0, 1) 60%
+        );
+        color: white;
+      }
+
+      .container {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 50px;
+      }
+
+      .headline {
+        border: 2px solid white;
+        border-radius: 20px;
+        padding: 15px;
+        width: 200px;
+      }
+
+      .headlinehead {
+      }
+
+      .headlinetext {
+        margin-top: -10px;
+        margin-bottom: 25px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid white;
+      }
+
+      .button {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .btnlogo {
+        width: 10px;
+        height: 10px;
+        background-color: white;
+        content: "";
+      }
+
+      .btncontainer {
+        padding: 10px 20px;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        background-color: #352831;
+        border-radius: 100px;
+        transition: all 0.5s ease;
+      }
+
+      .btncontainer:hover {
+        transition: all 0.5s ease;
+        background-color: #503f4b;
+      }
+
+      .optioncontainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        gap: 15px;
+      }
+
+      .circleandtextcontainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+        transition: all 0.5s ease;
+      }
+
+      .circle {
+        width: 80px;
+        height: 80px;
+        background-color: #352831;
+        border: 1px solid #5f4f41;
+        border-radius: 100%;
+        content: "";
+        box-shadow: 0 0 1px #ffdbb0;
+        transition: all 0.5s ease;
+      }
+
+      .circleandtextcontainer:hover {
+        transition: all 0.5s ease;
+        scale: 1.2;
+        margin: 0px 20px;
+      }
+
+      .circleandtextcontainer:hover .circle {
+        transition: all 0.5s ease;
+        box-shadow: 0 0 15px #ffdbb0;
+      }
+    </style>
   </head>
   <body>
-    <h1>Halo Dunia</h1>
+    <div class="container">
+      <div class="headline">
+        <p class="headlinehead">Name</p>
+        <h2 class="headlinetext">Shopee</h2>
+        <a href="#" class="button">
+          <div class="btncontainer">
+            <div class="btnlogo"></div>
+            <div>Plugins</div>
+          </div>
+        </a>
+      </div>
+      <div class="optioncontainer">
+        <div class="circleandtextcontainer">
+          <div class="circle"></div>
+          <div class="text">Test</div>
+        </div>
+        <div class="circleandtextcontainer">
+          <div class="circle"></div>
+          <div class="text">Test</div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
