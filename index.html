@@ -37,15 +37,24 @@
         border-radius: 20px;
         padding: 15px;
         width: 200px;
+        opacity: 0;
+        transition: all 0.3s ease;
       }
 
       .headlinehead {
       }
 
+      .opac {
+        opacity: 1 !important;
+        transition: all 0.3s ease;
+      }
+
       .headlinetext {
-        margin-top: -10px;
+        transition: all 0.3s ease;
+      }
+      .line {
+        content: "";
         margin-bottom: 25px;
-        padding-bottom: 20px;
         border-bottom: 1px solid white;
       }
 
@@ -104,15 +113,29 @@
         content: "";
         box-shadow: 0 0 1px #ffdbb0;
         transition: all 0.5s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .circleandtextcontainer:hover {
+      .circleimage {
+        width: 80%;
+        height: 80%;
+        border-radius: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .circleandtextcontainer:hover,
+      .active.circleandtextcontainer {
         transition: all 0.5s ease;
         scale: 1.2;
         margin: 0px 20px;
       }
 
-      .circleandtextcontainer:hover .circle {
+      .circleandtextcontainer:hover .circle,
+      .active.circleandtextcontainer > .circle {
         transition: all 0.5s ease;
         box-shadow: 0 0 15px #ffdbb0;
       }
@@ -120,9 +143,10 @@
   </head>
   <body>
     <div class="container">
-      <div class="headline">
+      <div class="headline" id="headline">
         <p class="headlinehead">Name</p>
-        <h2 class="headlinetext">Shopee</h2>
+        <h2 class="headlinetext" id="headlinetext">Shopee</h2>
+        <div class="line"></div>
         <a href="#" class="button">
           <div class="btncontainer">
             <div class="btnlogo"></div>
@@ -132,14 +156,91 @@
       </div>
       <div class="optioncontainer">
         <div class="circleandtextcontainer">
-          <div class="circle"></div>
-          <div class="text">Test</div>
+          <div class="circle">
+            <div
+              class="circleimage"
+              style="background-image: url('assets/blibli.jpg')"
+            ></div>
+          </div>
+          <div class="text">Bli Bli</div>
         </div>
         <div class="circleandtextcontainer">
-          <div class="circle"></div>
-          <div class="text">Test</div>
+          <div class="circle">
+            <div
+              class="circleimage"
+              style="background-image: url('assets/bukalapak.png')"
+            ></div>
+          </div>
+          <div class="text">Bukalapak</div>
+        </div>
+        <div class="circleandtextcontainer active">
+          <div class="circle">
+            <div
+              class="circleimage"
+              style="background-image: url('assets/tokopedia.png')"
+            ></div>
+          </div>
+          <div class="text">Tokopedia</div>
+        </div>
+        <div class="circleandtextcontainer">
+          <div class="circle">
+            <div
+              class="circleimage"
+              style="background-image: url('assets/shopee.png')"
+            ></div>
+          </div>
+          <div class="text">Shopee</div>
+        </div>
+        <div class="circleandtextcontainer">
+          <div class="circle">
+            <div
+              class="circleimage"
+              style="background-image: url('assets/jdid.png')"
+            ></div>
+          </div>
+          <div class="text">Jd Id</div>
+        </div>
+        <div class="circleandtextcontainer">
+          <div class="circle">
+            <div
+              class="circleimage"
+              style="background-image: url('assets/lazada.png')"
+            ></div>
+          </div>
+          <div class="text">Lazada</div>
         </div>
       </div>
     </div>
+
+    <script>
+      const defaulttext = document.querySelector(".active .text").innerHTML;
+      document.getElementById("headlinetext").innerHTML = defaulttext;
+      document.querySelector("#headline a").href = `#${defaulttext}`;
+      setTimeout(() => {
+        document.getElementById("headline").classList.add("opac");
+      }, 500);
+
+      const circle = document.querySelectorAll(".circleandtextcontainer");
+      circle.forEach((eventele) => {
+        eventele.addEventListener("click", (ele) => {
+          circle.forEach((ev) => {
+            ev.classList.remove("active");
+          });
+          ele.currentTarget.classList.add("active");
+
+          const text = ele.currentTarget.querySelector(".text").innerHTML;
+          const headlinetext = document.getElementById("headlinetext");
+          const headline = document.getElementById("headline");
+          headline.classList.remove("opac");
+          setTimeout(() => {
+            document.querySelector("#headline a").href = `#${text}`;
+            headlinetext.innerHTML = text;
+          }, 300);
+          setTimeout(() => {
+            headline.classList.add("opac");
+          }, 500);
+        });
+      });
+    </script>
   </body>
 </html>
